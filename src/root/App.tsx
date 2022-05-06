@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import "./style.css";
+import { useWeb3Context } from "../hooks";
 import ConnectButton from "../components/ConnectButton";
 
 function App() {
+    const { address, connect, hasCachedProvider } = useWeb3Context();
+    const [walletChecked, setWalletChecked] = useState(false);
+
+    useEffect(() => {
+        if (hasCachedProvider()) {
+            connect().then(() => {
+                setWalletChecked(true);
+            });
+        } else {
+            setWalletChecked(true);
+        }
+    }, []);
+
     return (
         <div className="App">
             <Paper
@@ -21,6 +35,7 @@ function App() {
             >
                 <h1>Hello World</h1>
                 <ConnectButton />
+                {address ? <p>Connected eh: ${address}</p> : <p>no</p>}
             </Paper>
         </div>
     );
