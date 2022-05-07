@@ -24,14 +24,21 @@ function MintButton() {
             signer
         );
 
+        const nftPrice = await collectionHelper.getPrice();
         let mintTx;
 
         try {
-            // const gasPrice = await getGasPrice(provider);
+            const gasPrice = await getGasPrice(provider);
             if (privateMint) {
-                mintTx = await collectionHelper.mintAllowList(amount);
+                mintTx = await collectionHelper.mintAllowList(amount, {
+                    value: nftPrice,
+                    gasPrice,
+                });
             } else {
-                mintTx = await collectionHelper.mint(amount);
+                mintTx = await collectionHelper.mint(amount, {
+                    value: nftPrice,
+                    gasPrice,
+                });
             }
         } catch (error) {
             // TODO: handle this

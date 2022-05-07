@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useWeb3Context } from "../../hooks";
 import { DEFAULT_NETWORK } from "../../constants";
 import "./style.css";
+import Button from "@mui/material/Button";
 
 function ConnectButton() {
     const {
@@ -16,16 +17,22 @@ function ConnectButton() {
 
     let buttonText = "Connect Wallet";
     let clickFunc: any = connect;
-    let buttonStyle = {};
+    let buttonStyle = {
+        backgroundColor: "black",
+    };
+    let buttonVariant: "contained" | "outlined" = "contained";
 
     if (isConnected) {
         buttonText = "Disconnect";
         clickFunc = disconnect;
+        buttonVariant = "outlined";
+        buttonStyle = {
+            backgroundColor: "white",
+        };
     }
 
     if (isConnected && providerChainID !== DEFAULT_NETWORK) {
         buttonText = "Wrong network";
-        buttonStyle = { backgroundColor: "rgb(255, 67, 67)" };
         clickFunc = () => {
             checkWrongNetwork();
         };
@@ -36,8 +43,15 @@ function ConnectButton() {
     }, [web3, connected]);
 
     return (
-        <div className="connect-button" style={buttonStyle} onClick={clickFunc}>
-            <p>{buttonText}</p>
+        <div>
+            <Button
+                style={buttonStyle}
+                size="small"
+                variant={buttonVariant}
+                onClick={clickFunc}
+            >
+                <p>{buttonText}</p>
+            </Button>
         </div>
     );
 }

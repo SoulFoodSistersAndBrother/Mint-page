@@ -22,7 +22,7 @@ function App() {
     return (
         <div className="App">
             <Paper
-                id="main-content"
+                elevation={0}
                 sx={{
                     px: 3,
                     py: 2,
@@ -30,14 +30,21 @@ function App() {
                     mt: 10,
                     maxWidth: "40em",
                     flexGrow: 1,
-                    backgroundColor: (theme) =>
-                        theme.palette.mode === "dark" ? "#1A2027" : "#fff",
                 }}
             >
-                {address ? <p>Connected eh: ${address}</p> : <p>no</p>}
-                <h1>Hello World</h1>
-                <ConnectButton />
-                <MintButton />
+                <div id="connect-wrapper">
+                    {address ? <p>{address.substring(0, 12)}... </p> : null}
+                    <ConnectButton />
+                </div>
+                <div id="main-content">
+                    <h1 style={{ textAlign: "center" }}>
+                        SOUL FOOD SISTER BROTHER
+                    </h1>
+
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <MintButton />
+                    </div>
+                </div>
             </Paper>
         </div>
     );
