@@ -40,7 +40,6 @@ const Web3Context = React.createContext<Web3ContextData>(null);
 
 export const useWeb3Context = () => {
     const web3Context = useContext(Web3Context);
-    console.log({ web3Context });
     if (!web3Context) {
         throw new Error(
             "useWeb3Context() can only be used inside of <Web3ContextProvider />, " +

@@ -6,6 +6,7 @@
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@ethersproject/providers": "^5.6.5",
+        "@mui/icons-material": "^5.6.2",
         "@mui/material": "^5.6.4",
         "@reduxjs/toolkit": "^1.8.1",
         "@testing-library/jest-dom": "^5.16.4",
@@ -16,9 +17,12 @@
         "@types/react": "^18.0.8",
         "@types/react-dom": "^18.0.3",
         "@walletconnect/web3-provider": "^1.7.8",
+        "classnames": "^2.3.1",
         "dotenv": "^16.0.0",
         "ethers": "^5.6.5",
+        "notistack": "^2.0.4",
         "react": "^18.1.0",
+        "react-copy-to-clipboard": "^5.1.0",
         "react-dom": "^18.1.0",
         "react-redux": "^8.0.1",
         "react-scripts": "4.0.3",
@@ -51,5 +55,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "@types/react-copy-to-clipboard": "^5.0.2"
     }
 }

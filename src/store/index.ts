@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import messagesReducer from "./slices/messages-slice";
 
 const store = configureStore({
-    reducer: {},
+    reducer: {
+        messages: messagesReducer,
+    },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ serializableCheck: false }),
 });

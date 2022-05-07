@@ -3,6 +3,7 @@ import Paper from "@mui/material/Paper";
 import "./style.css";
 import { useWeb3Context } from "../hooks";
 import ConnectButton from "../components/ConnectButton";
+import MintButton from "../components/MintButton";
 
 function App() {
     const { address, connect, hasCachedProvider } = useWeb3Context();
@@ -33,9 +34,10 @@ function App() {
                         theme.palette.mode === "dark" ? "#1A2027" : "#fff",
                 }}
             >
+                {address ? <p>Connected eh: ${address}</p> : <p>no</p>}
                 <h1>Hello World</h1>
                 <ConnectButton />
-                {address ? <p>Connected eh: ${address}</p> : <p>no</p>}
+                <MintButton />
             </Paper>
         </div>
     );
